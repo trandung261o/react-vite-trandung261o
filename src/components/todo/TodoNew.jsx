@@ -8,6 +8,7 @@ const TodoNew = (props) => {
 
     const handleClick = () => {
         addNewTodo(valueInput);
+        setValueInput("");      //mỗi lần bấm nút Add thì reset ô input bằng rỗng
     }
 
     const handleOnChange = (name) => {
@@ -16,7 +17,9 @@ const TodoNew = (props) => {
 
     return (
         <div className='todo-new'>
-            <input type="text" onChange={event => handleOnChange(event.target.value)} />
+            <input type="text" onChange={event => handleOnChange(event.target.value)}
+                value={valueInput}
+            />
 
             <button style={{ cursor: "pointer" }} onClick={handleClick}>
                 Add
