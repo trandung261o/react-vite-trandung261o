@@ -5,6 +5,7 @@ import reactLogo from './assets/react.svg'
 import { useState } from 'react';
 import Header from './components/layout/header';
 import Footer from './components/layout/footer';
+import { Outlet } from 'react-router-dom';
 
 const App = () => {
     const [todoList, setTodoList] = useState([
@@ -66,11 +67,12 @@ const App = () => {
 
             {todoList.length === 0 &&
                 <div className='todo-image'>
-                    <img src={reactLogo} className='logo' />
+                <img src={reactLogo} className='logo' />
                 </div>
-            } */}
+                } */}
 
             </div>
+            <Outlet />
             <Footer />
         </>
     )
