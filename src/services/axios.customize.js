@@ -24,7 +24,6 @@ instance.interceptors.response.use(function (response) {
     // Do something with response data
 
     //nếu có tồn tại resonse.data và resonse.data thì instance sẽ trả về response.data, ngược lại thì trả về response
-    debugger
     if (response.data && response.data.data) return response.data;
     return response;
 }, function (error) {
