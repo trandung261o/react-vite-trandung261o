@@ -44,8 +44,8 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    {/* <App /> */}
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  // off react strictMode đi để đỡ phải chạy 2 lần (react chạy 2 lần trong chế độ dev để tìm bug)
+  < RouterProvider router={router} />
+  // </React.StrictMode>,
 )
