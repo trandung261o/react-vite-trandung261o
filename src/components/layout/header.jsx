@@ -4,7 +4,7 @@ import { BookOutlined, HomeOutlined, TeamOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 
 const Header = () => {
-    const [current, setCurrent] = useState('mail');
+    const [current, setCurrent] = useState('home');
     const onClick = e => {
         console.log('click ', e);
         setCurrent(e.key);
