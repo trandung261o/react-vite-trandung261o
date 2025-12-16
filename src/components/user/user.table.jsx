@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { notification, Popconfirm, Table } from 'antd';
-import { deleteUserAPI, fetchAllUserAPI } from '../../services/api.service';
+import { deleteUserAPI } from '../../services/api.service';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import UpdateUserModal from './update.user.modal';
 import ViewUserDetail from './view.user.detail';
