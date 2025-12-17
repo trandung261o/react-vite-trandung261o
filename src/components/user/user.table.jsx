@@ -35,7 +35,17 @@ const UserTable = (props) => {
     }
 
     const onChange = (pagination, filters, sorter, extra) => {
-        console.log(">>> check:", { pagination, filters, sorter, extra });
+        if (pagination && pagination.current) {
+            if (+pagination.current !== +current) {
+                setCurrent(+pagination.current);     //"5" -> 5
+            }
+        }
+
+        if (pagination && pagination.pageSize) {
+            if (+pagination.pageSize !== +pageSize) {
+                setPageSize(+pagination.pageSize);     //"5" -> 5
+            }
+        }
     };
 
 
@@ -45,7 +55,7 @@ const UserTable = (props) => {
             title: 'STT',
             render: (_, record, index) => {
                 return (
-                    <>{index + 1}</>
+                    <>{(index + 1) + (current - 1) * pageSize}</>
                 )
             }
         },

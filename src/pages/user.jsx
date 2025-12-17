@@ -11,9 +11,11 @@ const UserPage = () => {
     const [pageSize, setPageSize] = useState(5);
     const [total, setTotal] = useState(0)
 
+    //empty array -> run once
+    //not empty -> next value !== prev value
     useEffect(() => {
         loadUser();
-    }, []);
+    }, [current, pageSize]);  //[] + condition
 
     const loadUser = async () => {
         const res = await fetchAllUserAPI(current, pageSize);
