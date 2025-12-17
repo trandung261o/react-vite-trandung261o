@@ -6,7 +6,9 @@ import UpdateUserModal from './update.user.modal';
 import ViewUserDetail from './view.user.detail';
 
 const UserTable = (props) => {
-    const { dataUsers, loadUser } = props;
+    const { dataUsers, loadUser, current, pageSize, total,
+        setCurrent, setPageSize, setTotal
+    } = props;
 
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
     const [dataUpdate, setDataUpdate] = useState(null);
@@ -31,6 +33,11 @@ const UserTable = (props) => {
             });
         }
     }
+
+    const onChange = (pagination, filters, sorter, extra) => {
+        console.log(">>> check:", { pagination, filters, sorter, extra });
+    };
+
 
 
     const columns = [
@@ -98,7 +105,18 @@ const UserTable = (props) => {
 
     return (
         <>
-            <Table columns={columns} dataSource={dataUsers} rowKey={"_id"} />
+            <Table columns={columns} dataSource={dataUsers} rowKey={"_id"}
+                pagination={
+                    {
+                        current: current,
+                        pageSize: pageSize,
+                        showSizeChanger: true,
+                        total: total,
+                        showTotal: (total, range) => { return (<div> {range[0]}-{range[1]} trên {total} rows</div>) }
+                    }
+                }
+                onChange={onChange}
+            />
             <UpdateUserModal
                 isModalUpdateOpen={isModalUpdateOpen}
                 setIsModalUpdateOpen={setIsModalUpdateOpen}
