@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { BookOutlined, HomeOutlined, SettingOutlined, TeamOutlined } from '@ant-design/icons';
+import { BookOutlined, HomeOutlined, SettingOutlined, TeamOutlined, LoginOutlined, AliwangwangOutlined } from '@ant-design/icons';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../context/auth.context';
 
@@ -32,21 +32,24 @@ const Header = () => {
             key: 'books',
             icon: <BookOutlined />,
         },
-        {
-            label: "Setting",
+
+        ...(!user.id ? [{
+            label: <Link to={"/login"}>Đăng nhập</Link>,
+            key: 'login',
+            icon: <LoginOutlined />,
+        }] : []),
+
+        ...(user.id ? [{
+            label: `Welcome ${user.fullName}`,
             key: 'setting',
-            icon: <SettingOutlined />,
+            icon: <AliwangwangOutlined />,
             children: [
                 {
-                    label: <Link to={'/login'}>Dang nhap</Link>,
-                    key: 'login'
+                    label: 'Đăng xuất',
+                    key: 'logout',
                 },
-                {
-                    label: 'Dang xuat',
-                    key: 'log out'
-                }
-            ]
-        }
+            ],
+        }] : []),
     ]
     return (
         <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
