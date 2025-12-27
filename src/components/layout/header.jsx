@@ -9,10 +9,7 @@ const Header = () => {
 
     const { user } = useContext(AuthContext)
 
-    console.log(">>> check data:", user);
-
     const onClick = e => {
-        console.log('click ', e);
         setCurrent(e.key);
     };
 

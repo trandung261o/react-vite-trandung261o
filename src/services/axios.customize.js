@@ -11,6 +11,9 @@ const instance = axios.create({
 
 // Add a request interceptor: can thiệp vào trước khi gửi đi request
 instance.interceptors.request.use(function (config) {
+    if (typeof window !== "undefined" && window && window.localStorage && window.localStorage.getItem('access_token')) {
+        config.headers.Authorization = 'Bearer ' + window.localStorage.getItem('access_token');
+    }
     // Do something before the request is sent
     return config;
 }, function (error) {
